@@ -1,0 +1,45 @@
+// Express.js Notes Tutprial
+    => https://www.geeksforgeeks.org/node-js/express-js/
+
+
+// 01-http-basic.js 
+
+=> In this show how to create a server using http method and show how to work with server
+    This Concept is Not Prefer for creation web-app (we use Express.js - 03-express-basic.js)
+
+// 02-http-app.js
+
+=> In thi file show How to create a more functionality on your app
+    with external html,css,js file in server, 
+    In this file we use navbar-app file as Example
+    but if we work big project this code is not good , so we Can use In this place
+    Express.js Concepts -> this is fast and very clean code
+
+// 03-express-basic.js 
+
+=> in this file we show how to work with http concept using express In place of Explicitly 
+creation of Http server, the express js directly create;
+
+// 04-express-app.js
+
+=> It is a upgrade version type of the file 02-http-app.js using Express concept;
+
+// 05-all-static.js
+
+=> In this file we learn about static Concept(like - path setup)
+
+// 06-basic-json.js
+
+=> In this file show how to send data in json formate;
+
+//07-params-query.js
+
+=> In this file how to work with params and query property in express;
+
+=========================================================================================
+
+Express.js is a minimal and flexible Node.js web application framework that provides 
+a list of features for building web and mobile applications easily. It simplifies
+the development of server-side applications by offering an easy-to-use API for 
+routing, middleware, and HTTP utilities.
+
