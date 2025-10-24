@@ -1,11 +1,165 @@
 // Express.js Notes Tutprial
     => https://www.geeksforgeeks.org/node-js/express-js/
 
+// Get Concept In express.js
+
+=>  What is a GET Request?
+
+    -> GET is used to fetch or read data from the server.
+    -> It does not change data on the server.
+    -> You can send GET requests from:
+------------------------------------------------------------------------------------------------------
+
+    -> Basic Example
+    const express = require('express');
+    const app = express();
+
+    // Basic GET route
+    app.get('/', (req, res) => {
+    res.send('Welcome to Express GET Example!');
+    });
+
+    app.listen(3000, () => {
+    console.log('Server running on http://localhost:3000');
+    });
+    
+    output :- Welcome to Express GET Example!
+
+-----------------------------------------------------------------------
+
+    🧱 1. GET with Static Response
+
+    -> You can return any type of data — text, HTML, or JSON.
+
+    app.get('/text', (req, res) => {
+    res.send('This is plain text response');
+    });
+
+    app.get('/html', (req, res) => {
+    res.send('<h1>Hello Deepak!</h1><p>This is HTML response.</p>');
+    });
+
+    app.get('/json', (req, res) => {
+    res.json({ name: 'Deepak', role: 'Developer' });
+    });
+
+-------------------------------------------------------------------------------
+
+    🧩 2. GET with Route Parameters (req.params)
+
+    -> You can define dynamic URLs using : followed by a name.
+
+    // URL: /users/101
+    app.get('/users/:id', (req, res) => {
+    const userId = req.params.id; // "101"
+    res.send(`User ID received: ${userId}`);
+    });
+
+    Output:
+
+    User ID received: 101
+
+
+   -> You can use multiple params:
+
+    // URL: /users/101/books/55
+    app.get('/users/:userId/books/:bookId', (req, res) => {
+    const { userId, bookId } = req.params;
+    res.send(`User ID: ${userId}, Book ID: ${bookId}`);
+    });
+
+-------------------------------------------------------------------------------------
+
+    🔍 3. GET with Query Parameters (req.query)
+
+    -> req.query is used when parameters come after a ? in the URL.
+
+    Example:
+
+    // URL: /search?name=deepak&city=indore
+    app.get('/search', (req, res) => {
+    const { name, city } = req.query;
+    res.send(`Searching for ${name} in ${city}`);
+    });
+
+    Output:
+
+    Searching for deepak in indore
+
+----------------------------------------------------------------------------------------
+
+    🗂️ 4. GET with Array or Object Data
+
+    -> You can return a full JSON list or object in a GET response.
+
+    const users = [
+    { id: 1, name: 'Deepak' },
+    { id: 2, name: 'Ravi' },
+    { id: 3, name: 'Neha' }
+    ];
+
+    // Return all users
+    app.get('/users', (req, res) => {
+    res.json(users);
+    });
+
+    // Return one user by ID
+    app.get('/users/:id', (req, res) => {
+    const id = parseInt(req.params.id);
+    const user = users.find(u => u.id === id);
+    
+    if (user){ res.json(user);}
+    else {res.status(404).send('User not found');}
+    });
+
+
+    ✅ Example URLs:
+
+    /users → returns all users
+
+    /users/2 → returns { id: 2, name: 'Ravi' }
+
+----------------------------------------------------------------------------------------
+    // OPtional 
+
+    ⚙️ 5. GET with Headers
+
+    You can access request headers using req.headers.
+
+    app.get('/check-header', (req, res) => {
+    const userAgent = req.headers['user-agent'];
+    res.send(`You are using: ${userAgent}`);
+    });
+    
+----------------------------------------------------------------------------------------
+
+    🧠 6. GET with Middleware Example
+
+    Middleware can run before GET routes — useful for logging or authentication.
+
+    // Simple logger middleware
+    app.use((req, res, next) => {
+    console.log(`[${new Date().toLocaleTimeString()}] ${req.method} ${req.url}`);
+    next();
+    });
+
+    app.get('/home', (req, res) => {
+    res.send('This is the Home Page!');
+    });
+
+
+==============================================================================================================
+
+
+
+
 
 // 01-http-basic.js 
 
 => In this show how to create a server using http method and show how to work with server
     This Concept is Not Prefer for creation web-app (we use Express.js - 03-express-basic.js)
+
+------------------------------------------------------------------------------------------------------
 
 // 02-http-app.js
 
@@ -15,26 +169,36 @@
     but if we work big project this code is not good , so we Can use In this place
     Express.js Concepts -> this is fast and very clean code
 
+------------------------------------------------------------------------------------------------------
+
 // 03-express-basic.js 
 
 => in this file we show how to work with http concept using express In place of Explicitly 
 creation of Http server, the express js directly create;
 
+------------------------------------------------------------------------------------------------------
+
 // 04-express-app.js
 
 => It is a upgrade version type of the file 02-http-app.js using Express concept;
+
+------------------------------------------------------------------------------------------------------
 
 // 05-all-static.js
 
 => In this file we learn about static Concept(like - path setup)
 
+------------------------------------------------------------------------------------------------------
+
 // 06-basic-json.js
 
 => In this file show how to send data in json formate;
 
+------------------------------------------------------------------------------------------------------
+
 //07-params-query.js
 
-=> In this file how to work with params and query property in express;
+=> In this file how to work with route params and query property in express;
 
 =========================================================================================
 
